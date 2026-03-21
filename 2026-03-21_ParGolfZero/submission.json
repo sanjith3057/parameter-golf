@@ -1,0 +1,18 @@
+{
+  "name": "Sanjith G",
+  "github_id": "sanjith3057",
+  "run_name": "ParGolf-Zero",
+  "track": "non_record_16mb",
+  "val_bpb": null,
+  "notes": "Non-record submission. Pipeline confirmed on Kaggle T4. Awaiting H100 compute grant for final scored run.",
+  "approach": "5-layer joint optimization system. Unique contribution: compression-aware training via per-row weight range penalty and QAT, treating the 16MB budget as a first-class training objective during gradient updates.",
+  "layers": {
+    "L1_COMPAT": "Auto-detects GPU platform, runs anywhere",
+    "L2_TRAIN": "FP16 embeddings + Muon WD + warmdown=20000",
+    "L3_COMPRESS": "Weight range penalty + QAT final 500 steps",
+    "L4_EVAL": "Sliding window stride=64, 960 token context",
+    "L5_ADAPT": "Low-rank Q/V regularization for TTT readiness"
+  },
+  "hardware_tested": "Kaggle T4 (smoke test)",
+  "hardware_target": "8xH100 SXM"
+}
